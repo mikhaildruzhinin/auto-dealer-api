@@ -10,4 +10,4 @@ def authenticate(username, password):
 
 def identity(payload):
     uid = payload['identity']
-    return UserModel.search_id(uid)
+    return RegisterModel.search_id(uid)
