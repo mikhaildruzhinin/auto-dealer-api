@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "3e51c5b1-5c26-412c-8dfa-21c7219742f5",
+		"name": "cars api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"ALice\",\n    \"password\": \"qwerty\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fd970b80-210f-4980-9ee1-071f06d88d42",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Tests for jwt\"] = jsonData.access_token!==undefined;",
+							"",
+							"pm.environment.set(\"jwt_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"ALice\",\n    \"password\": \"qwerty\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auth",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /auto/{mark}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/auto/lada",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auto",
+						"lada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auto/{mark}",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"max_speed\" : 280,\n    \"distance\" : 400,\n    \"handler\" : \"Auto Motors\",\n    \"stock\" : \"Germany\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auto/lada",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auto",
+						"lada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /auto/{mark}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"max_speed\" : 20,\n    \"distance\" : 40,\n    \"handler\" : \"aaa\",\n    \"stock\" : \"bbb\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/auto/lada",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auto",
+						"lada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /auto/{mark}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/auto/lada",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auto",
+						"lada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /stock",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/stock",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"stock"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
