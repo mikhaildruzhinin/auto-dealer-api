@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required, current_identity
 from secure.auth_conf import authenticate, identity
 from resources.register import RegisterResource
 from resources.auto import AutoResource
-# from resources.stock import StockResource
+from resources.stock import Stock
 
 app = Flask(__name__)
 app.secret_key = "MySuperDuperSecretKey"
@@ -16,7 +16,7 @@ def get_root_page():
     return {'msg': 'hello world'}
 
 api.add_resource(AutoResource, '/auto/<string:mark>')
-# api.add_resource(StockResource, '/stock')
+api.add_resource(Stock, '/stock')
 api.add_resource(RegisterResource, '/register')
 
 if __name__ == '__main__':
