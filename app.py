@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required, current_identity
-# from secure.auth_conf import authenticate, identity
+from secure.auth_conf import authenticate, identity
 from resources.register import RegisterResource
 # from resources.auto import AutoResource
 # from resources.stock import StockResource
@@ -9,7 +9,7 @@ from resources.register import RegisterResource
 app = Flask(__name__)
 app.secret_key = "MySuperDuperSecretKey"
 api = Api(app)
-# jwt = JWT(app, authentication_handler=authenticate, identity_handler=identity)
+jwt = JWT(app, authentication_handler=authenticate, identity_handler=identity)
 
 @app.route('/', methods=['GET'])
 def get_root_page():
