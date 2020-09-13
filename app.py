@@ -5,6 +5,7 @@ from flask_jwt import JWT, jwt_required, current_identity
 # from resources.register import RegisterResource
 # from resources.auto import AutoResource
 # from resources.stock import StockResource
+import table
 
 app = Flask(__name__)
 app.secret_key = "MySuperDuperSecretKey"
