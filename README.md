@@ -18,7 +18,7 @@ pipenv install
 pipenv run python3 app.py
 ```
 
-Приложение будет запущего по адресу http://localhost:8000/
+Приложение будет запущено по адресу http://localhost:8000/
 
 ### HTTP запросы
 
